@@ -63,6 +63,8 @@ bun run export:web
 
 Les dépendances sont verrouillées dans `bun.lock`. Utilisez Bun pour toute modification afin de garder ce fichier synchronisé.
 
+Oxlint charge `oxlint.config.ts` avec les plugins TypeScript, React, React Performance, Import, Promise et les règles React Doctor recommandées pour React Native. Oxfmt charge `oxfmt.config.ts`.
+
 ## Structure
 
 ```text
