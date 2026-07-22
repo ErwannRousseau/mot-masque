@@ -2,7 +2,7 @@ import { defineConfig } from "oxlint";
 import { REACT_NATIVE_RULES, RECOMMENDED_RULES } from "oxlint-plugin-react-doctor";
 
 export default defineConfig({
-  plugins: ["eslint", "typescript", "unicorn", "oxc", "react", "react-perf", "import", "promise"],
+  plugins: ["typescript", "unicorn", "oxc", "react", "react-perf", "import", "promise"],
   jsPlugins: [
     {
       name: "react-doctor",
