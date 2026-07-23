@@ -6,6 +6,15 @@ mock.module("react-native", () => ReactNativeWeb);
 mock.module("react-native-safe-area-context", () => ({
   SafeAreaView: ReactNativeWeb.View,
 }));
+mock.module("../../../assets/sounds/timer-finished.wav", () => ({ default: 1 }));
+mock.module("expo-audio", () => ({
+  setAudioModeAsync: async () => {},
+  useAudioPlayer: () => ({ play: () => {}, seekTo: async () => {} }),
+}));
+mock.module("expo-haptics", () => ({
+  NotificationFeedbackType: { Warning: "warning" },
+  notificationAsync: async () => {},
+}));
 
 let GameScreen: typeof import("@/screens/game-screen").GameScreen;
 

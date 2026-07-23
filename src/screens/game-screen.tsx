@@ -1,4 +1,6 @@
 import { useEffect, useReducer } from "react";
+import { setAudioModeAsync, useAudioPlayer } from "expo-audio";
+import * as Haptics from "expo-haptics";
 import { Alert, KeyboardAvoidingView, Platform, StyleSheet } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
@@ -13,6 +15,11 @@ import { VotePhase } from "@/features/game/vote-phase";
 
 export function GameScreen() {
   const [game, dispatch] = useReducer(gameReducer, undefined, initialGameState);
+  const timerFinishedPlayer = useAudioPlayer(require("../../assets/sounds/timer-finished.wav"));
+
+  useEffect(() => {
+    void setAudioModeAsync({ playsInSilentMode: true, interruptionMode: "mixWithOthers" });
+  }, []);
 
   useEffect(() => {
     if (
@@ -23,9 +30,17 @@ export function GameScreen() {
       return;
     }
 
-    const interval = setInterval(() => dispatch({ type: "timerTick" }), 1000);
+    const interval = setInterval(() => {
+      if (game.round?.remainingSeconds === 1) {
+        void timerFinishedPlayer.seekTo(0).then(() => timerFinishedPlayer.play());
+        if (Platform.OS !== "web") {
+          void Haptics.notificationAsync(Haptics.NotificationFeedbackType.Warning);
+        }
+      }
+      dispatch({ type: "timerTick" });
+    }, 1000);
     return () => clearInterval(interval);
-  }, [game.phase, game.round?.timerRunning, game.round?.remainingSeconds]);
+  }, [game.phase, game.round?.timerRunning, game.round?.remainingSeconds, timerFinishedPlayer]);
 
   const resetGame = () => {
     Alert.alert("Revenir à l’accueil ?", "Les scores de cette partie seront effacés.", [
