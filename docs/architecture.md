@@ -10,7 +10,7 @@ Le projet sépare les routes, les écrans de navigation et les fonctionnalités 
 - `src/ui/` contient les composants visuels partagés entre plusieurs fonctionnalités.
 - `src/constants/` contient les constantes transversales, comme le thème.
 
-Une phase interne du jeu reste dans `src/features/game/`. Elle ne devient un écran dans `src/screens/` que si Expo Router la rend directement.
+Une phase interne du jeu reste dans `src/features/game/` et utilise le suffixe `Phase`. Elle ne devient un écran avec le suffixe `Screen` dans `src/screens/` que si Expo Router la rend directement.
 
 ## Imports
 

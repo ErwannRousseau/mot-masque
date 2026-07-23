@@ -5,11 +5,11 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { colors } from "@/constants/theme";
 
 import { gameReducer, initialGameState } from "@/features/game/game-state";
-import { QuestionsScreen, ReadyScreen } from "@/features/game/questions-screen";
-import { ResultScreen } from "@/features/game/result-screen";
-import { RoleRevealScreen } from "@/features/game/role-reveal-screen";
-import { SetupScreen } from "@/features/game/setup-screen";
-import { VoteScreen } from "@/features/game/vote-screen";
+import { ResultPhase } from "@/features/game/result-phase";
+import { RoleRevealPhase } from "@/features/game/role-reveal-phase";
+import { QuestionsPhase, ReadyPhase } from "@/features/game/round-phases";
+import { SetupPhase } from "@/features/game/setup-phase";
+import { VotePhase } from "@/features/game/vote-phase";
 
 export function GameScreen() {
   const [game, dispatch] = useReducer(gameReducer, undefined, initialGameState);
@@ -41,7 +41,7 @@ export function GameScreen() {
         style={styles.flex}
       >
         {game.phase === "setup" ? (
-          <SetupScreen
+          <SetupPhase
             game={game}
             onPlayerCountChange={(count) => dispatch({ type: "setPlayerCount", count })}
             onPlayerNameChange={(index, name) => dispatch({ type: "setPlayerName", index, name })}
@@ -52,7 +52,7 @@ export function GameScreen() {
         ) : null}
 
         {game.phase === "roles" && game.round ? (
-          <RoleRevealScreen
+          <RoleRevealPhase
             players={game.players}
             round={game.round}
             onShowRole={() => dispatch({ type: "showRole" })}
@@ -61,7 +61,7 @@ export function GameScreen() {
         ) : null}
 
         {game.phase === "ready" && game.round ? (
-          <ReadyScreen
+          <ReadyPhase
             players={game.players}
             round={game.round}
             roundNumber={game.roundNumber}
@@ -70,7 +70,7 @@ export function GameScreen() {
         ) : null}
 
         {game.phase === "questions" && game.round ? (
-          <QuestionsScreen
+          <QuestionsPhase
             players={game.players}
             round={game.round}
             onToggleTimer={() => dispatch({ type: "toggleTimer" })}
@@ -80,7 +80,7 @@ export function GameScreen() {
         ) : null}
 
         {game.phase === "vote" && game.round ? (
-          <VoteScreen
+          <VotePhase
             players={game.players}
             round={game.round}
             onSelect={(index) => dispatch({ type: "selectSuspect", index })}
@@ -89,7 +89,7 @@ export function GameScreen() {
         ) : null}
 
         {game.phase === "result" && game.round ? (
-          <ResultScreen
+          <ResultPhase
             players={game.players}
             round={game.round}
             onNextRound={() => dispatch({ type: "startRound" })}

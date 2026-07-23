@@ -6,7 +6,7 @@ import { Card } from "@/ui/card";
 
 import type { Player, Round } from "./game.types";
 
-export function ResultScreen({
+export function ResultPhase({
   players,
   round,
   onNextRound,
@@ -25,8 +25,8 @@ export function ResultScreen({
     : round.endReason === "time-up"
       ? "Le groupe n’a pas trouvé le mot avant la fin du temps."
       : `${players[round.suspectedIndex ?? 0].name} a été accusé à tort.`;
-      console.log(players);
-  const sortedPlayers = players.toSorted((a, b) => b.score - a.score);
+
+  const sortedPlayers = [...players].sort((a, b) => b.score - a.score);
 
   return (
     <ScrollView contentContainerStyle={styles.scrollContent}>

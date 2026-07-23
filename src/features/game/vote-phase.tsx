@@ -5,7 +5,7 @@ import { Button } from "@/ui/button";
 
 import type { Player, Round } from "./game.types";
 
-export function VoteScreen({
+export function VotePhase({
   players,
   round,
   onSelect,

@@ -8,7 +8,7 @@ import type { CategoryId, GameState } from "./game.types";
 import { CategoryChoiceCard, DurationChoiceCard } from "./setup-choice-card";
 import { SetupPlayersCard } from "./setup-players-card";
 
-type SetupScreenProps = {
+type SetupPhaseProps = {
   game: GameState;
   onPlayerCountChange: (count: number) => void;
   onPlayerNameChange: (index: number, value: string) => void;
@@ -17,14 +17,14 @@ type SetupScreenProps = {
   onStart: () => void;
 };
 
-export function SetupScreen({
+export function SetupPhase({
   game,
   onPlayerCountChange,
   onPlayerNameChange,
   onCategoryChange,
   onDurationChange,
   onStart,
-}: SetupScreenProps) {
+}: SetupPhaseProps) {
   return (
     <ScrollView
       contentInsetAdjustmentBehavior="automatic"

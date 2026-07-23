@@ -25,10 +25,12 @@ export default defineConfig({
   rules: {
     ...RECOMMENDED_RULES,
     ...REACT_NATIVE_RULES,
+    "react-doctor/js-tosorted-immutable": "off",
     "react/react-in-jsx-scope": "off",
     "react/style-prop-object": "off",
     "react-perf/jsx-no-new-array-as-prop": "off",
     "react-perf/jsx-no-new-function-as-prop": "off",
     "react-perf/jsx-no-new-object-as-prop": "off",
+    "unicorn/no-array-sort": ["warn", { allowAfterSpread: true }],
   },
 });

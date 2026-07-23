@@ -7,7 +7,7 @@ import { Card } from "@/ui/card";
 import { formatTime } from "./game-engine";
 import type { Player, Round } from "./game.types";
 
-export function ReadyScreen({
+export function ReadyPhase({
   players,
   round,
   roundNumber,
@@ -51,7 +51,7 @@ export function ReadyScreen({
   );
 }
 
-export function QuestionsScreen({
+export function QuestionsPhase({
   players,
   round,
   onToggleTimer,

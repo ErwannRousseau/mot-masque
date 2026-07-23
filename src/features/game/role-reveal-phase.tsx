@@ -7,7 +7,7 @@ import { Card } from "@/ui/card";
 import { getRole } from "./game-engine";
 import type { Player, Role, Round } from "./game.types";
 
-export function RoleRevealScreen({
+export function RoleRevealPhase({
   players,
   round,
   onShowRole,
