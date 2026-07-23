@@ -44,7 +44,7 @@ export function Button({
     >
       <View style={styles.content}>
         {loading ? (
-          <ActivityIndicator color={variant === "primary" ? colors.white : colors.ink} />
+          <ActivityIndicator color={variant === "ghost" ? colors.onDark : colors.ink} />
         ) : null}
         <Text style={[styles.label, labelStyles[variant]]}>{children}</Text>
       </View>
@@ -54,13 +54,15 @@ export function Button({
 
 const styles = StyleSheet.create({
   base: {
-    minHeight: 54,
+    minHeight: 56,
     alignItems: "center",
     justifyContent: "center",
     paddingHorizontal: spacing.lg,
     paddingVertical: spacing.md,
-    borderRadius: radii.medium,
+    borderRadius: radii.small,
     borderCurve: "continuous",
+    borderWidth: 2,
+    borderColor: colors.dark,
   },
   fullWidth: {
     alignSelf: "stretch",
@@ -74,7 +76,7 @@ const styles = StyleSheet.create({
   label: {
     fontSize: 17,
     lineHeight: 22,
-    fontWeight: "700",
+    fontWeight: "900",
     textAlign: "center",
   },
   pressed: {
@@ -88,24 +90,23 @@ const styles = StyleSheet.create({
 
 const variantStyles = StyleSheet.create({
   primary: {
-    backgroundColor: colors.primary,
+    backgroundColor: colors.accent,
   },
   secondary: {
-    backgroundColor: colors.surfaceStrong,
-    borderWidth: 1,
-    borderColor: colors.line,
+    backgroundColor: colors.violet,
   },
   ghost: {
     backgroundColor: "transparent",
+    borderColor: "transparent",
   },
   danger: {
-    backgroundColor: colors.dangerSoft,
+    backgroundColor: colors.primary,
   },
 });
 
 const labelStyles = StyleSheet.create({
   primary: {
-    color: colors.white,
+    color: colors.ink,
   },
   secondary: {
     color: colors.ink,
@@ -114,6 +115,6 @@ const labelStyles = StyleSheet.create({
     color: colors.muted,
   },
   danger: {
-    color: colors.danger,
+    color: colors.ink,
   },
 });

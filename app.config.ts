@@ -1,21 +1,22 @@
 import type { ExpoConfig } from "expo/config";
 
 const config: ExpoConfig = {
-  name: "Mot Masqué",
-  slug: "mot-masque",
+  name: "GuessIt",
+  slug: "guessit",
   version: "1.0.0",
   orientation: "portrait",
   icon: "./assets/images/icon.png",
-  scheme: "motmasque",
+  scheme: "guessit",
   userInterfaceStyle: "light",
   ios: {
     supportsTablet: true,
-    bundleIdentifier: "com.erwannrousseau.motmasque",
+    bundleIdentifier: "com.erwannrousseau.guessit",
+    icon: "./assets/app-icon.icon",
   },
   android: {
-    package: "com.erwannrousseau.motmasque",
+    package: "com.erwannrousseau.guessit",
     adaptiveIcon: {
-      backgroundColor: "#F4EFE5",
+      backgroundColor: "#17162B",
       foregroundImage: "./assets/images/android-icon-foreground.png",
       monochromeImage: "./assets/images/android-icon-monochrome.png",
     },
@@ -30,9 +31,9 @@ const config: ExpoConfig = {
     [
       "expo-splash-screen",
       {
-        backgroundColor: "#F4EFE5",
-        image: "./assets/images/splash-icon.png",
-        imageWidth: 180,
+        backgroundColor: "#FFF7E8",
+        image: "./assets/images/splash-lockup.png",
+        imageWidth: 320,
       },
     ],
   ],

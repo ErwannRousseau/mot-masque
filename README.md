@@ -1,4 +1,4 @@
-# Mot Masqué
+# GuessIt
 
 Un jeu mobile local de mots cachés et de déduction sociale, développé avec **Expo**, **React Native**, **Expo Router** et **TypeScript**.
 
@@ -82,7 +82,7 @@ src/
 
 ## Indépendance
 
-Mot Masqué est un projet original indépendant fondé sur des mécaniques génériques de mots cachés et de déduction sociale. Il n’est affilié à aucun jeu commercial existant.
+GuessIt est un projet original indépendant fondé sur des mécaniques génériques de mots cachés et de déduction sociale. Il n’est affilié à aucun jeu commercial existant.
 
 ## Licence
 

@@ -6,6 +6,8 @@ mock.module("react-native", () => ReactNativeWeb);
 mock.module("react-native-safe-area-context", () => ({
   SafeAreaView: ReactNativeWeb.View,
 }));
+mock.module("../../../assets/images/icon.png", () => ({ default: "/guessit-icon.png" }));
+mock.module("../../../assets/images/logo-mark.png", () => ({ default: "/guessit-mark.png" }));
 mock.module("../../../assets/sounds/timer-finished.wav", () => ({ default: 1 }));
 mock.module("expo-audio", () => ({
   setAudioModeAsync: async () => {},

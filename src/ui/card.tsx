@@ -5,7 +5,7 @@ import { colors, radii, spacing } from "@/constants/theme";
 
 type CardProps = ViewProps & {
   children: ReactNode;
-  tone?: "default" | "accent" | "success" | "danger" | "dark";
+  tone?: "default" | "accent" | "violet" | "success" | "danger" | "dark";
 };
 
 export function Card({ children, tone = "default", style, ...props }: CardProps) {
@@ -21,8 +21,8 @@ const styles = StyleSheet.create({
     padding: spacing.lg,
     borderRadius: radii.large,
     borderCurve: "continuous",
-    borderWidth: 1,
-    borderColor: colors.line,
+    borderWidth: 2,
+    borderColor: colors.dark,
     gap: spacing.md,
   },
 });
@@ -32,19 +32,19 @@ const toneStyles = StyleSheet.create({
     backgroundColor: colors.surface,
   },
   accent: {
-    backgroundColor: colors.accentSoft,
-    borderColor: "#E7CB87",
+    backgroundColor: colors.accent,
+  },
+  violet: {
+    backgroundColor: colors.violet,
   },
   success: {
     backgroundColor: colors.successSoft,
-    borderColor: "#B7D6C7",
   },
   danger: {
     backgroundColor: colors.dangerSoft,
-    borderColor: "#E5B9B4",
   },
   dark: {
-    backgroundColor: colors.dark,
-    borderColor: colors.dark,
+    backgroundColor: "#23213D",
+    borderColor: colors.violet,
   },
 });

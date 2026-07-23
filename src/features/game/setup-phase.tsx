@@ -1,4 +1,4 @@
-import { ScrollView, StyleSheet, Text, View } from "react-native";
+import { Image, ScrollView, StyleSheet, Text, View } from "react-native";
 
 import { colors, spacing } from "@/constants/theme";
 import { Button } from "@/ui/button";
@@ -32,21 +32,33 @@ export function SetupPhase({
       contentContainerStyle={styles.scrollContent}
     >
       <View style={styles.hero}>
-        <View style={styles.logoMark}>
-          <Text style={styles.logoQuestion}>?</Text>
-          <View style={styles.logoDot} />
-        </View>
-        <View style={styles.heroCopy}>
-          <Text selectable style={styles.eyebrow}>
-            JEU DE MOTS & DÉDUCTION
-          </Text>
+        <View style={styles.brandRow}>
+          <Image
+            accessibilityIgnoresInvertColors
+            source={require("../../../assets/images/logo-mark.png")}
+            style={styles.logoMark}
+          />
           <Text selectable style={styles.title}>
-            Mot Masqué
-          </Text>
-          <Text selectable style={styles.subtitle}>
-            Aidez le groupe à trouver le mot… sans révéler qui est le complice.
+            GuessIt
           </Text>
         </View>
+        <Text selectable style={styles.eyebrow}>
+          JEU DE MOTS & DÉDUCTION
+        </Text>
+        <View style={styles.mantraRow}>
+          <Text selectable style={[styles.mantra, styles.mantraLight]}>
+            Devine.
+          </Text>
+          <Text selectable style={[styles.mantra, styles.mantraCoral]}>
+            Doute.
+          </Text>
+          <Text selectable style={[styles.mantra, styles.mantraLime]}>
+            Démasque.
+          </Text>
+        </View>
+        <Text selectable style={styles.subtitle}>
+          Trouvez le mot secret sans laisser le Complice brouiller les pistes.
+        </Text>
       </View>
 
       <SetupPlayersCard
@@ -93,52 +105,46 @@ function RuleLine({ number, text }: { number: string; text: string }) {
 const styles = StyleSheet.create({
   scrollContent: { padding: spacing.lg, paddingBottom: spacing.xxl, gap: spacing.lg },
   hero: {
-    flexDirection: "row",
-    alignItems: "center",
-    gap: spacing.md,
-    paddingVertical: spacing.sm,
+    gap: spacing.sm,
+    paddingTop: spacing.sm,
+    paddingBottom: spacing.md,
   },
-  heroCopy: { flex: 1, gap: spacing.xs },
+  brandRow: { flexDirection: "row", alignItems: "center", gap: spacing.sm },
   logoMark: {
-    width: 74,
-    height: 74,
-    borderRadius: 25,
-    borderCurve: "continuous",
-    backgroundColor: colors.dark,
-    alignItems: "center",
-    justifyContent: "center",
-    transform: [{ rotate: "-4deg" }],
-  },
-  logoQuestion: { color: colors.accent, fontSize: 42, fontWeight: "900", lineHeight: 48 },
-  logoDot: {
-    position: "absolute",
-    right: 9,
-    top: 9,
-    width: 11,
-    height: 11,
-    borderRadius: 6,
-    backgroundColor: colors.primary,
+    width: 62,
+    height: 62,
   },
   eyebrow: {
     color: colors.primary,
-    fontSize: 12,
+    fontSize: 11,
     lineHeight: 16,
-    fontWeight: "800",
-    letterSpacing: 1.4,
+    fontWeight: "900",
+    letterSpacing: 1.8,
   },
-  title: { color: colors.ink, fontSize: 34, lineHeight: 39, fontWeight: "900", letterSpacing: -1 },
-  subtitle: { color: colors.muted, fontSize: 16, lineHeight: 23 },
+  title: {
+    color: colors.ink,
+    fontSize: 42,
+    lineHeight: 47,
+    fontWeight: "900",
+    letterSpacing: -1.6,
+  },
+  mantraRow: { flexDirection: "row", flexWrap: "wrap", gap: spacing.xs },
+  mantra: { fontSize: 21, lineHeight: 27, fontWeight: "900", letterSpacing: -0.4 },
+  mantraLight: { color: colors.ink },
+  mantraCoral: { color: colors.primary },
+  mantraLime: { color: colors.accent },
+  subtitle: { color: colors.muted, fontSize: 16, lineHeight: 23, maxWidth: 430 },
   rulesTitle: { color: colors.ink, fontSize: 19, lineHeight: 24, fontWeight: "900" },
   ruleLine: { flexDirection: "row", alignItems: "flex-start", gap: spacing.sm },
   ruleNumber: {
     width: 26,
     height: 26,
     borderRadius: 13,
-    backgroundColor: "rgba(23, 32, 51, 0.10)",
+    backgroundColor: colors.dark,
     alignItems: "center",
     justifyContent: "center",
   },
-  ruleNumberText: { color: colors.ink, fontSize: 12, fontWeight: "900" },
+  ruleNumberText: { color: colors.accent, fontSize: 12, fontWeight: "900" },
   ruleText: { flex: 1, color: colors.ink, fontSize: 15, lineHeight: 21, fontWeight: "600" },
   legalNote: {
     color: colors.muted,

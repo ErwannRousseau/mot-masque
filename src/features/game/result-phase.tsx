@@ -103,7 +103,7 @@ const styles = StyleSheet.create({
   scrollContent: { padding: spacing.lg, paddingBottom: spacing.xxl, gap: spacing.lg },
   resultHero: { paddingVertical: spacing.xl, alignItems: "center" },
   resultKicker: {
-    color: colors.primary,
+    color: colors.ink,
     fontSize: 12,
     lineHeight: 16,
     fontWeight: "900",
@@ -140,7 +140,7 @@ const styles = StyleSheet.create({
     width: 28,
     height: 28,
     borderRadius: 14,
-    backgroundColor: colors.background,
+    backgroundColor: colors.violet,
     alignItems: "center",
     justifyContent: "center",
   },

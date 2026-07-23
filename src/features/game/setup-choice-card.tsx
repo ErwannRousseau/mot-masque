@@ -18,7 +18,7 @@ export function CategoryChoiceCard({
 }) {
   return (
     <Card>
-      <SectionTitle number="2" title="Choisissez les mots" />
+      <SectionTitle number="2" title="Choisissez les mots" tone="violet" />
       <View style={styles.chipWrap}>
         {categories.map((category) => (
           <ChoiceChip
@@ -26,6 +26,7 @@ export function CategoryChoiceCard({
             label={categoryLabels[category]}
             selected={value === category}
             onPress={() => onChange(category)}
+            selectedTone="accent"
           />
         ))}
       </View>
@@ -42,7 +43,7 @@ export function DurationChoiceCard({
 }) {
   return (
     <Card>
-      <SectionTitle number="3" title="Durée de la manche" />
+      <SectionTitle number="3" title="Durée de la manche" tone="primary" />
       <View style={styles.durationRow}>
         {durations.map((duration) => (
           <ChoiceChip
@@ -51,6 +52,7 @@ export function DurationChoiceCard({
             selected={value === duration}
             onPress={() => onChange(duration)}
             grow
+            selectedTone="violet"
           />
         ))}
       </View>
@@ -58,10 +60,23 @@ export function DurationChoiceCard({
   );
 }
 
-function SectionTitle({ number, title }: { number: string; title: string }) {
+function SectionTitle({
+  number,
+  title,
+  tone,
+}: {
+  number: string;
+  title: string;
+  tone: "primary" | "violet";
+}) {
   return (
     <View style={styles.sectionTitleRow}>
-      <View style={styles.sectionNumber}>
+      <View
+        style={[
+          styles.sectionNumber,
+          tone === "primary" ? styles.sectionNumberPrimary : styles.sectionNumberViolet,
+        ]}
+      >
         <Text style={styles.sectionNumberText}>{number}</Text>
       </View>
       <Text selectable style={styles.sectionTitle}>
@@ -76,11 +91,13 @@ function ChoiceChip({
   selected,
   onPress,
   grow = false,
+  selectedTone,
 }: {
   label: string;
   selected: boolean;
   onPress: () => void;
   grow?: boolean;
+  selectedTone: "accent" | "violet";
 }) {
   return (
     <Pressable
@@ -90,7 +107,8 @@ function ChoiceChip({
       style={({ pressed }) => [
         styles.chip,
         grow && styles.chipGrow,
-        selected && styles.chipSelected,
+        selected &&
+          (selectedTone === "accent" ? styles.chipSelectedAccent : styles.chipSelectedViolet),
         pressed && styles.controlPressed,
       ]}
     >
@@ -104,12 +122,16 @@ const styles = StyleSheet.create({
   sectionNumber: {
     width: 30,
     height: 30,
-    borderRadius: 15,
-    backgroundColor: colors.dark,
+    borderRadius: 10,
+    borderCurve: "continuous",
+    borderWidth: 2,
+    borderColor: colors.dark,
     alignItems: "center",
     justifyContent: "center",
   },
-  sectionNumberText: { color: colors.white, fontSize: 14, fontWeight: "800" },
+  sectionNumberPrimary: { backgroundColor: colors.primary },
+  sectionNumberViolet: { backgroundColor: colors.violet },
+  sectionNumberText: { color: colors.ink, fontSize: 14, fontWeight: "900" },
   sectionTitle: { flex: 1, color: colors.ink, fontSize: 19, lineHeight: 24, fontWeight: "800" },
   chipWrap: { flexDirection: "row", flexWrap: "wrap", gap: spacing.sm },
   durationRow: { flexDirection: "row", gap: spacing.sm },
@@ -117,16 +139,17 @@ const styles = StyleSheet.create({
     minHeight: 42,
     paddingHorizontal: spacing.md,
     paddingVertical: spacing.sm,
-    borderRadius: radii.pill,
-    borderWidth: 1,
-    borderColor: colors.line,
+    borderRadius: radii.small,
+    borderWidth: 2,
+    borderColor: colors.dark,
     backgroundColor: colors.surfaceStrong,
     alignItems: "center",
     justifyContent: "center",
   },
   chipGrow: { flex: 1 },
-  chipSelected: { backgroundColor: colors.dark, borderColor: colors.dark },
+  chipSelectedAccent: { backgroundColor: colors.accent },
+  chipSelectedViolet: { backgroundColor: colors.violet },
   chipText: { color: colors.ink, fontSize: 14, fontWeight: "700" },
-  chipTextSelected: { color: colors.white },
+  chipTextSelected: { color: colors.ink },
   controlPressed: { opacity: 0.72, transform: [{ scale: 0.97 }] },
 });

@@ -71,7 +71,7 @@ function RoleCard({ role, word, playerName }: { role: Role; word: string; player
       badge: "ENQUÊTEUR",
       title: "Trouve le mot secret",
       description: "Pose des questions fermées et observe qui aide un peu trop.",
-      tone: "success" as const,
+      tone: "violet" as const,
     },
   }[role];
 
@@ -136,7 +136,7 @@ const styles = StyleSheet.create({
     paddingBottom: spacing.md,
   },
   progressDot: { width: 18, height: 5, borderRadius: 3, backgroundColor: colors.line },
-  progressDotDone: { backgroundColor: colors.success },
+  progressDotDone: { backgroundColor: colors.violet },
   progressDotCurrent: { width: 34, backgroundColor: colors.primary },
   secretIcon: {
     width: 92,
@@ -144,13 +144,15 @@ const styles = StyleSheet.create({
     alignSelf: "center",
     borderRadius: 31,
     borderCurve: "continuous",
-    backgroundColor: colors.dark,
+    backgroundColor: colors.surface,
+    borderWidth: 2,
+    borderColor: colors.dark,
     alignItems: "center",
     justifyContent: "center",
     marginBottom: spacing.sm,
   },
   secretIconText: {
-    color: colors.accent,
+    color: colors.ink,
     fontSize: 32,
     lineHeight: 36,
     fontWeight: "900",
@@ -178,10 +180,15 @@ const styles = StyleSheet.create({
     textAlign: "center",
     paddingHorizontal: spacing.sm,
   },
-  roleCard: { alignItems: "center", paddingVertical: spacing.xl, gap: spacing.md },
+  roleCard: {
+    alignItems: "center",
+    paddingVertical: spacing.xl,
+    gap: spacing.md,
+    transform: [{ rotate: "-1deg" }],
+  },
   rolePlayer: { color: colors.muted, fontSize: 15, lineHeight: 20, fontWeight: "700" },
   roleBadge: {
-    color: colors.primary,
+    color: colors.ink,
     fontSize: 12,
     lineHeight: 16,
     fontWeight: "900",
@@ -222,7 +229,7 @@ const styles = StyleSheet.create({
     padding: spacing.lg,
     borderRadius: radii.medium,
     borderCurve: "continuous",
-    backgroundColor: "rgba(255,255,255,0.58)",
+    backgroundColor: colors.surface,
     alignItems: "center",
   },
   hiddenWord: {
