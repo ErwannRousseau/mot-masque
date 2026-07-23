@@ -1,10 +1,10 @@
 import type { ExpoConfig } from "expo/config";
 
 const config: ExpoConfig = {
-  name: "GuessIt",
+  name: "GuessIt : Le Complice",
   slug: "guessit",
   owner: "erwannrousseau",
-  version: "0.1.0",
+  version: "1.0.0",
   orientation: "portrait",
   icon: "./assets/images/icon.png",
   scheme: "guessit",
@@ -19,6 +19,11 @@ const config: ExpoConfig = {
   },
   android: {
     package: "com.erwannrousseau.guessit",
+    blockedPermissions: [
+      "android.permission.READ_EXTERNAL_STORAGE",
+      "android.permission.WRITE_EXTERNAL_STORAGE",
+      "android.permission.SYSTEM_ALERT_WINDOW",
+    ],
     adaptiveIcon: {
       backgroundColor: "#17162B",
       foregroundImage: "./assets/images/android-icon-foreground.png",
