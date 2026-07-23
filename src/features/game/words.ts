@@ -79,7 +79,7 @@ export const wordsByCategory: Record<PlayableCategoryId, readonly string[]> = {
     "Cheesecake",
     "Couscous",
     "Omelette",
-    "Mojito",
+    "Limonade",
     "Hot-dog",
     "Mousse au chocolat",
     "Kebab",

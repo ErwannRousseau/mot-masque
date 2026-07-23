@@ -3,15 +3,19 @@ import type { ExpoConfig } from "expo/config";
 const config: ExpoConfig = {
   name: "GuessIt",
   slug: "guessit",
-  version: "1.0.0",
+  owner: "erwannrousseau",
+  version: "0.1.0",
   orientation: "portrait",
   icon: "./assets/images/icon.png",
   scheme: "guessit",
   userInterfaceStyle: "light",
   ios: {
-    supportsTablet: true,
+    supportsTablet: false,
     bundleIdentifier: "com.erwannrousseau.guessit",
     icon: "./assets/app-icon.icon",
+    config: {
+      usesNonExemptEncryption: false,
+    },
   },
   android: {
     package: "com.erwannrousseau.guessit",
@@ -40,6 +44,11 @@ const config: ExpoConfig = {
   experiments: {
     typedRoutes: true,
     reactCompiler: true,
+  },
+  extra: {
+    eas: {
+      projectId: "b7d9f890-e856-40bf-a006-b94210e1b6c0",
+    },
   },
 };
 
